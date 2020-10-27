@@ -35,13 +35,19 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+    %w(jpg jpeg png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
+  # The method should return a Range for minimum/maximum allowed file size in bytes.
+  # For example, to allow a size of greater than or equal to 1 byte and less than or equal to 10 MB, you'd do:
+  def size_range
+    1.byte..10.megabytes
+  end
 end
