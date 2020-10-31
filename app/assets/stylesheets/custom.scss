@@ -128,13 +128,21 @@ h1, h2 {
     img {
       margin-top: 10px;
       margin-bottom: 20px;
-      width: 100%;
+      width: 10%;
     }
     
     .topic-index-icon {
       width: 35px;
       height: 30px;
       margin-left: 20px;
+    }
+    
+    .topic-favorited-icon {
+      width: 35px;
+      height: 30px;
+      margin-left: 20px;
+      /* color convert ... black to magenta */
+      filter: invert(100%) sepia(100%) hue-rotate(240deg) saturate(100000%) brightness(100%);
     }
     
     p {
