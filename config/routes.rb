@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post '/favorites', to: 'favorites#create'
   delete '/favorites', to: 'favorites#destroy'
   
+  post '/comments', to: 'comments#create'
+  
   resources :users
-  resources :topics
+  resources :topics do
+    resources :comments, only: [:create]
+  end
 end

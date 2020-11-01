@@ -1,5 +1,5 @@
 <div class="topic-index-wrapper">
-  <div calss="container">
+  <div class="container">
     <% @topics.each do |topic| %>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -18,10 +18,28 @@
               <% end %>
             <% end %>
             <%= topic.favorites.count %>
-            <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <%= link_to topic_path(topic.id) do %>
+              <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% end %>
+            <%= topic.comments.count %>
             <p class="topic-text">
               <%= topic.description %>
             </p>
+            <% if @comments.exists?(topic_id: topic.id) %>
+              <div class="section-comment">
+                <h3 class="comment-title">
+                  コメント
+                </h3>
+                <% @comments.each do |comment| %>
+                  <div class="comment-user">
+                    <%= comment.user.name + ' >' %>
+                  </div>
+                  <div class="comment-content">
+                    <%= comment.content %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
